@@ -1,0 +1,20 @@
+#version 330
+
+//Zmienne jednorodne
+uniform mat4 P;
+uniform mat4 V;
+uniform mat4 M;
+uniform mat4 M2;
+uniform mat4 MR;
+uniform  float a; //określa odległość między 1 i 2 klatką
+
+//Atrybuty
+in vec4 vertex; //wspolrzedne wierzcholka w przestrzeni modelu
+in vec2 texCoords;  //kolor wierzcholka (na razie ignorowany)
+in vec4 normal; //wektor normalny w wierzcholku (na razie ignorowany)
+out vec2 t0;
+
+void main(void) {
+	t0=texCoords;
+	gl_Position=P*V*mix(M*vertex,M2*vertex,a);
+}

@@ -1,0 +1,16 @@
+uniform sampler2D fbo_texture;
+uniform float offset;
+varying vec2 f_texcoord;
+
+void main(void) {
+  vec2 texcoord = f_texcoord;
+	//texcoord.x +=sin(texcoord.y * 4*2*3.14159 / mod(offset,10)+offset) / 100; //cos sin tan 
+	//texcoord.x +=sin(texcoord.y * 4*2*3.14159+offset/2) / 50;
+  //texcoord.x += sin(texcoord.y * 4*2*3.14159 / mod(offset,10)) / 100;
+ // texcoord.y += cos(texcoord.y * 4*2*3.14159 + offset) / 100;
+	//texcoord.y += sqrt(cos(texcoord.y * 4*2*3.14159 + offset) / 100); //ciemne pasy poprzeczne
+	
+ vec4 c = texture2D(fbo_texture, texcoord);
+	float a = (sin(offset/6)+1.1)*(c.x+c.y+c.z)/6;
+  gl_FragColor =c;//vec4(a*c.x,a*c.y,a*c.z,c.w);
+}

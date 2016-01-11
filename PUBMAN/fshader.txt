@@ -1,0 +1,10 @@
+#version 330
+
+out vec4 pixelColor; //Zmienna wyjsciowa fragment shadera. Zapisuje sie do niej ostateczny (prawie) kolor piksela
+uniform sampler2D unit0;
+in vec2 t0;
+
+void main(void) {
+	
+	pixelColor=texture(unit0,t0); 
+}
